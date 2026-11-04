@@ -56,3 +56,5 @@ print(celsius_to_fahrenheit(36, 3), "°F")
 #what is c:5? and (c):6
 #answer: c:5 is a format specifier that indicates the value of c should be printed with a minimum width of 5 characters. If the value of c has fewer than 5 characters, it will be right-aligned and padded with spaces on the left to make up the width. If c has more than 5 characters, it will be printed as is without truncation.
 #answer: (c):6 is a format specifier that indicates the value of c should be printed with a minimum width of 6 characters. If the value of c has fewer than 6 characters, it will be right-aligned and padded with spaces on the left to make up the width. If c has more than 6 characters, it will be printed as is without truncation.
+
+
