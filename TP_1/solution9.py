@@ -1,47 +1,23 @@
-# (a) 
-def is_prime(n):
-    if n < 2:
-        return False
-    d = 2
-    while d * d <= n:
-        if n % d == 0:
-            return False
-        d += 1
-    return True
+def electricity_bill(kwh):
+  if kwh<0:
+    return None
+  tier1_kwh=min(kwh,50)
+  tier2_kwh=min(max(kwh-50,0),150)
+  tier3_kwh=max(kwh-200,0)
 
+  energy_cost=(tier1_kwh*480)+(tier2_kwh*610)+(tier3_kwh*730)
 
-# (b) 
-print("Primes below 50:", end=" ")
-for i in range(2, 50):
-    if is_prime(i):
-        print(i, end=" ")
-print()
+  subtotal=energy_cost + 2000
 
-count = 0
-for i in range(2, 100):
-    if is_prime(i):
-        count += 1
-print("Number of primes below 100:", count)
+  total_bill=round(subtotal*1.10)
 
+  return total_bill
 
-# (c)
-def goldbach(n):
-    for p in range(2, n):
-        if is_prime(p):
-            q = n - p
-            if is_prime(q):
-                return p, q
+  #(b)
+test_values=[0,35,50,120,200,350]
 
+for kwh in test_values:
+    bill_riel=electricity_bill(kwh)
+    bill_usd=bill_riel/4100
+    print(f"{kwh:3d} kWh -> {bill_riel:7,} riel  (≈ {bill_usd:6.2f} USD)")
 
-for n in range(4, 32, 2):
-    p, q = goldbach(n)
-    print(f"{n} = {p} + {q}")
-
-# (d)
-holds = True
-for n in range(4, 10001, 2):
-    if goldbach(n) is None:
-        holds = False
-        break
-
-print("Goldbach holds for every even number from 4 to 10000:", holds)
